@@ -2,16 +2,18 @@ package github
 
 import (
 	"fmt"
+	"regexp"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
-func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
+func TestAccGithubBranchDataSource(t *testing.T) {
 
-	t.Run("queries branch protection rules without error", func(t *testing.T) {
-		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
+	randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
+
+	t.Run("queries an existing branch without error", func(t *testing.T) {
 
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
@@ -19,13 +21,16 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 				auto_init = true
 			}
 
-			data "github_branch_protection_rules" "all" {
-				repository = github_repository.test.name
+			data "github_branch" "test" {
+				repository = github_repository.test.id
+				branch = "main"
 			}
 		`, randomID)
 
 		check := resource.ComposeTestCheckFunc(
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.#", "0"),
+			resource.TestMatchResourceAttr(
+				"data.github_branch.test", "id", regexp.MustCompile(randomID),
+			),
 		)
 
 		testCase := func(t *testing.T, mode string) {
@@ -55,8 +60,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 
 	})
 
-	t.Run("queries branch protection", func(t *testing.T) {
-		randomID := acctest.RandStringFromCharSet(5, acctest.CharSetAlphaNum)
+	t.Run("queries an invalid branch without error", func(t *testing.T) {
 
 		config := fmt.Sprintf(`
 			resource "github_repository" "test" {
@@ -64,21 +68,16 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 				auto_init = true
 			}
 
-			resource "github_branch_protection" "protection" {
-				repository_id = github_repository.test.id
-			 	pattern = "main*"
+			data "github_branch" "test" {
+				repository = github_repository.test.id
+				branch = "xxxxxx"
 			}
 		`, randomID)
 
-		config2 := config + `
-			data "github_branch_protection_rules" "all" {
-				repository = github_repository.test.name
-			}
-		`
-
 		check := resource.ComposeTestCheckFunc(
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.#", "1"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.pattern", "main*"),
+			resource.TestCheckNoResourceAttr(
+				"data.github_branch.test", "id",
+			),
 		)
 
 		testCase := func(t *testing.T, mode string) {
@@ -88,9 +87,6 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 				Steps: []resource.TestStep{
 					{
 						Config: config,
-					},
-					{
-						Config: config2,
 						Check:  check,
 					},
 				},
