@@ -23,79 +23,79 @@ func dataSourceGithubBranchProtectionRules() *schema.Resource {
 							Type:     schema.TypeString,
 							Computed: true,
 						},
-						"allowsDeletions": {
+						"allows_deletions": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"allowsForcePushes": {
+						"allows_force_pushes": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"blocksCreations": {
+						"blocks_creations": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"dismissesStaleReviews": {
+						"dismisses_stale_reviews": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"isAdminEnforced": {
+						"is_admin_enforced": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"lockAllowsFetchAndMerge": {
+						"lock_allows_fetch_and_merge": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"lockBranch": {
+						"lock_branch": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requireLastPushApproval": {
+						"require_last_push_approval": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiredApprovingReviewCount": {
+						"required_approving_review_count": {
 							Type:     schema.TypeInt,
 							Computed: true,
 						},
-						"requiresApprovingReviews": {
+						"requires_approving_reviews": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresCodeOwnerReviews": {
+						"requires_codeowner_reviews": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresCommitSignatures": {
+						"requires_commit_signatures": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresConversationResolution": {
+						"requires_conversation_resolution": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresLinearHistory": {
+						"requires_linear_history": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresDeployments": {
+						"requires_deployments": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresStatusChecks": {
+						"requires_status_checks": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requiresStrictStatusChecks": {
+						"requires_strict_status_checks": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"restrictsPushes": {
+						"restricts_pushes": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"restrictsReviewDismissals": {
+						"restricts_review_dismissals": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
