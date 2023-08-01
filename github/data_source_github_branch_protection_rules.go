@@ -23,6 +23,82 @@ func dataSourceGithubBranchProtectionRules() *schema.Resource {
 							Type:     schema.TypeString,
 							Computed: true,
 						},
+						"allowsDeletions": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"allowsForcePushes": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"blocksCreations": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"dismissesStaleReviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"isAdminEnforced": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"lockAllowsFetchAndMerge": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"lockBranch": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requireLastPushApproval": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiredApprovingReviewCount": {
+							Type:     schema.TypeInt,
+							Computed: true,
+						},
+						"requiresApprovingReviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresCodeOwnerReviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresCommitSignatures": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresConversationResolution": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresLinearHistory": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresDeployments": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresStatusChecks": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requiresStrictStatusChecks": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"restrictsPushes": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"restrictsReviewDismissals": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
 					},
 				},
 			},
