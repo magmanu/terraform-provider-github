@@ -79,11 +79,11 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 		check := resource.ComposeTestCheckFunc(
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.#", "1"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.pattern", "main*"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.test", "rules.0.allows_deletions", "true"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.test", "rules.0.allows_force_pushes", "false"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.test", "rules.0.blocks_creations", "false"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.test", "rules.0.dismisses_stale_reviews", "false"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.test", "rules.0.is_admin_enforced", "false"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.allows_deletions", "true"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.allows_force_pushes", "false"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.blocks_creations", "false"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.dismisses_stale_reviews", "false"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.is_admin_enforced", "false"),
 		)
 
 		testCase := func(t *testing.T, mode string) {
