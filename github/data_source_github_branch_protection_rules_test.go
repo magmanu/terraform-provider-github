@@ -67,6 +67,10 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 			resource "github_branch_protection" "protection" {
 				repository_id = github_repository.test.id
 			 	pattern = "main*"
+				allows_deletions = false
+				allows_force_pushes = false
+				require_code_owner_reviews = true
+
 			}
 		`, randomID)
 
@@ -89,7 +93,7 @@ func TestAccGithubBranchProtectionRulesDataSource(t *testing.T) {
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.require_last_push_approval", "false"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.required_approving_review_count", "1"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.requires_approving_reviews", "true"),
-			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.requires_codeowner_reviews", "true"),
+			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.require_code_owner_reviews", "true"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.requires_commit_signatures", "false"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.requires_conversation_resolution", "false"),
 			resource.TestCheckResourceAttr("data.github_branch_protection_rules.all", "rules.0.requires_linear_history", "false"),

@@ -63,7 +63,7 @@ func dataSourceGithubBranchProtectionRules() *schema.Resource {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
-						"requires_codeowner_reviews": {
+						"require_code_owner_reviews": {
 							Type:     schema.TypeBool,
 							Computed: true,
 						},
