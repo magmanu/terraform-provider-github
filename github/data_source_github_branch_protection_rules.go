@@ -23,6 +23,82 @@ func dataSourceGithubBranchProtectionRules() *schema.Resource {
 							Type:     schema.TypeString,
 							Computed: true,
 						},
+						"allows_deletions": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"allows_force_pushes": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"blocks_creations": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"dismisses_stale_reviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"is_admin_enforced": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"lock_allows_fetch_and_merge": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"lock_branch": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"require_last_push_approval": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"required_approving_review_count": {
+							Type:     schema.TypeInt,
+							Computed: true,
+						},
+						"requires_approving_reviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"require_code_owner_reviews": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_commit_signatures": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_conversation_resolution": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_linear_history": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_deployments": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_status_checks": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"requires_strict_status_checks": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"restricts_pushes": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
+						"restricts_review_dismissals": {
+							Type:     schema.TypeBool,
+							Computed: true,
+						},
 					},
 				},
 			},
